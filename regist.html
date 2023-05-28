@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>得意先検索</title>
+  <title>得意先登録</title>
   <style>
     body {
       background-color: #f0f0f0;
@@ -17,8 +17,14 @@
       text-align: center;
     }
     .menu .back-button {
-      text-align: right;
-      margin-bottom: 10px;
+        background-color: #00bfff;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      margin: 10px 0;
+      cursor: pointer;
     }
     .menu .button-container {
       display: flex;
@@ -44,18 +50,24 @@
 </head>
 <body>
   <div class="menu">
-      
     <h2>得意先管理メニュー</h2>
+    <button class="back-button" style="margin-left: 500">メインメニューへ戻る</button>
     <div class="button-container">
-        <button onclick="location.href='main_menu.jsp'" style="margin-left: 500">メインメニューへ戻る</button>
-        <div class="search-form">
-            得意先コード
-            <input type="text" placeholder="検索キーワードを入力してください"maxlength="7">
-          </div>
+        
+      <div class="search-form">
+        得意先名
+        <input type="text" placeholder="得意先名"><br>
+        電話番号
+        <input type="text" placeholder="電話番号" pattern="[0-9-]*" title="数字とハイフンのみ入力してください"><br> 
+        郵便番号
+        <input type="text" placeholder="郵便番号" pattern="[0-9-]*" title="数字とハイフンのみ入力してください"><br>
+        <input type="text" placeholder="住所"><br>
+        割引率
+        <input type="text" placeholder="割引率" pattern="[0-9]*" title="数字のみ入力してください">％<br> 
       <button>検索</button>
     </div>
     <div style="color:red; font-weight:bold;">
-        <c:out value="${}" escapeXML="false"/>
+      <c:out value="${}" escapeXML="false"/>
     </div>
   </div>
 </body>
