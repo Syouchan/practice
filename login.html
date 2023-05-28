@@ -1,0 +1,74 @@
+<%-- pageディレクティブの設定 --%>
+<%@ page contentType="text/html;charset=UTF=8" pageEncoding="UTF-8" session="false"%>
+<%-- taglibディレクティブで、使用したタグライブラリを宣言 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ログイン</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-form {
+      text-align: center;
+      margin-top: -600px; /* 追加 */
+    }
+
+    .form-field {
+      margin-bottom: 10px;
+    }
+
+    .form-field label {
+      display: block;
+    }
+
+    .form-field input[type="text"],
+    .form-field input[type="password"] {
+      width: 200px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .form-field input::placeholder {
+      color: #ccc;
+      font-style: italic;
+    }
+
+    .login-button {
+      background-color: aqua;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-form">
+    <h2>ログイン</h2>
+    <form action="login.jsp" method="POST">
+      <div class="form-field">
+        従業員番号
+        <input type="text" id="employee-number" name="employee-number" placeholder="従業員番号を入力してください" required>
+      </div>
+      <div class="form-field">
+        パスワード
+        <input type="password" id="password" name="password" placeholder="パスワードを入力してください" required>
+      </div>
+      <button class="login-button" type="submit">ログイン</button>
+    </form>
+  </div>
+</body>
+</html>
