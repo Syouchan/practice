@@ -1,0 +1,108 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>得意先変更</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+    }
+    .menu {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .menu h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .menu .back-button {
+      background-color: #00bfff;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+    .menu .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .menu .button-container button {
+      background-color: #00bfff;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+    .search-form input[type="text"] {
+      margin-top: 10px;
+      padding: 5px;
+      width: 200px;
+    }
+  </style>
+<script>
+    //constを使用して宣言された変数は、一度値が代入されると再代入することができない（定数）
+    //javaでいうfinal
+
+    //document.getElementById("要素id")で指定したHTMLの要素を取得して検証を行っています。
+    // フォームの入力内容を検証する関数
+
+    // 入力フィールドの制限を設定する関数
+    function setFieldRestrictions() {
+      const customerName = document.getElementById("customerName");
+      const phoneNumber = document.getElementById("phoneNumber");
+      const postalCode = document.getElementById("postalCode");
+      const address = document.getElementById("address");
+      const discountRate = document.getElementById("discountRate");
+
+      customerName.maxLength = 6;             // 得意先名の最大文字数
+      phoneNumber.maxLength = 13;            // 電話番号の最大文字数
+      postalCode.maxLength = 8;               // 郵便番号の最大文字数
+      address.maxLength = 40;                 // 住所の最大文字数
+      discountRate.maxLength = 2;           // 割引率の最大文字数
+    }
+
+    // 得意先コードの編集を禁止する関数
+    function disableCustomerCode() {
+      document.getElementById("customerCode").readOnly = true;
+    }
+</script>
+</head>
+<body onload="disableCustomerCode(); setFieldRestrictions();">
+  <div class="menu">
+    <h2>得意先変更</h2>
+    <button class="back-button" style="margin-left: 500">メインメニューへ戻る</button>
+    <div class="button-container">
+      <form onsubmit="return validateForm()">
+        <div class="search-form">
+          得意先コード
+          <input type="text" id="customerCode" placeholder="得意先コード"><br>
+          得意先名
+          <input type="text" id="customerName" placeholder="得意先名" required><br>
+          電話番号
+          <input type="text" id="phoneNumber" placeholder="電話番号" required pattern="[0-9-]*" title="数字とハイフンのみ入力してください"><br> 
+          郵便番号
+          <input type="text" id="postalCode" placeholder="郵便番号" required pattern="[0-9-]*" title="数字とハイフンのみ入力してください"><br>
+          住所
+          <input type="text" id="address" placeholder="住所" required><br>
+          割引率
+          <input type="text" id="discountRate" placeholder="割引率" pattern="[0-9]*" title="数字のみ入力してください">％<br> 
+          <button type="submit">検索</button>
+          <button>戻る</button>
+        </div>
+      </form>
+      <div style="color:red; font-weight:bold;">
+        <!-- エラーメッセージの表示 -->
+        <!-- <c:out value="${}" escapeXML="false"/> -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
